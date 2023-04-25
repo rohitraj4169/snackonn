@@ -14,11 +14,7 @@ ActiveStorage.start()
 import "bootstrap"
 // import "@fortawesome/fontawesome-free/css/all"
 import "font-awesome";
-import  "jquery.dataTables"
 
-//= require jquery
-//= require jquery_ujs
-//= require jquery.dataTables
 
 
 
