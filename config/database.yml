@@ -88,4 +88,4 @@ test:
 #   password: <%= ENV['SNACKONN_DATABASE_PASSWORD'] %>
 production:
   <<: *default
-  url: <%#= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
