@@ -1,0 +1,56 @@
+<div class="container">	
+	<% @categories.each do |category| %>
+			<h2><%= category.name %></h2>
+			<div class="row">
+			<% category.product.limit(8).each do |product| %>
+			
+				<div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+					<div class="card product-item border-0 mb-4">                   
+							<div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+								<%= image_tag product.image, class:"img-fluid ", style:"width:180px;height:150px" %>
+							</div>
+							<div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+								<%= content_tag :h6, class: "text-truncate mb-3", title: (product.name.size > 20 ? product.name : nil) do %>
+								<%= truncate(product.name, length: 20) %> 
+								<span class="small"><%= product.weight %></span> 
+								<span class="small"><%= product.unit %></span>
+								<% end %>
+
+
+								
+								<div class="d-flex justify-content-center">
+									<h6><%= product.price %></h6><h6 class="text-muted ml-2"><del><%=(product.price + product.price * 0.1).round %></del></h6>
+
+								</div>
+							</div>
+							<div class="card-footer d-flex justify-content-between bg-light border">
+								<%= link_to product_detail_path(product.id), class: "btn btn-sm text-dark p-0" do %>
+									<i class="fas fa-eye text-primary mr-1"></i>View Detail
+								<% end %>
+								<!--
+								<a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+								-->
+								
+								<% if user_signed_in? %>
+									<%= link_to line_items_path(product_id: product.id), method: :post, class: "btn btn-sm text-dark p-0" do %>
+										<i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+									<% end %>
+								<% else %>
+									<%= button_tag "Add to cart", type: "button", onclick: "addToCart(#{product.id}, #{product.price}, 1)", class: "btn btn-sm text-dark p-0" %>
+								<% end %>
+
+							</div>
+					
+					</div>
+				</div>
+					
+			<% end %>
+		</div>
+		<%#= link_to "View More", product_detail_path(category_id: category.id) %>
+		<% if category.product.count > 8 %>
+			<a class="float-right" href="/categories/<%= category.id %>">View More</a>
+		<% end %>
+   
+
+	<% end %>
+</div>

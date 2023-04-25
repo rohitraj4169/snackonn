@@ -1,0 +1,46 @@
+<header id="header" class="header">
+    <div class="top-left">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="./"><%= image_tag "logo.png"%></a>
+            <a class="navbar-brand hidden" href="./"><%= image_tag "logo2.png"%></a>
+            <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+        </div>
+    </div>
+    <div class="top-right">
+        <div class="header-menu">
+            <form class="search-form">
+                <%= search_form_for @ransack_product, as: :products_search, url: products_path do |f| %>
+                    <div class="input-group" style="margin-top: 8px;">
+                    <%= f.search_field :name_cont, class: 'form-control-sm', style: 'float: left; width: 150px;', placeholder: 'Find a product', :autocomplete => :off do %>
+                        <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        </div>
+                    <% end %>
+                    <span class="input-group-append">
+                        <button class="btn btn-sm" type="submit">
+                        <span aria-hidden="true" class="fa fa-search"></span>
+                        </button>
+                    </span>
+                    </div>
+                <% end %>
+  
+            </form>
+        
+
+            <div class="user-area dropdown float-right">
+                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= image_tag "admin.jpg",class:"user-avatar rounded-circle"%>
+                </a>
+
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                   <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                        <i class="fa fa-power-off"></i> Logout
+                    <% end %>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>

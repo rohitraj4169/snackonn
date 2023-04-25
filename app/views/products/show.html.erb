@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <% if @product.image.attached? %>
+     <%= image_tag @product.image %>
+     <br>
+      <%= @product.name %>
+      <%= @product.weight %>
+      <%= @product.unit %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <%= @product.name %>
+      <div>
+      <div class="card-body">
+        <p>
+          <strong>Description:</strong>
+          <%= @product.description %>
+        </p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              <strong>Weight:</strong>
+              <%= @product.weight %>
+              <%= @product.unit %>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              <strong>Price:</strong>
+              <%= @product.price %>
+            </p>
+          </div>
+        </div>
+
+        <p>
+          <strong>Stock:</strong>
+          <%= @product.stock %>
+        </p>
+
+        <p>
+          <strong>Status:</strong>
+          <%= @product.status %>
+        </p>
+
+        <p>
+          <strong>Category:</strong>
+          <%= link_to @product.category.name, category_path(@product.category)%>
+        </p>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-warning" %> 
+        <%= link_to 'Back', products_path, class:"btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

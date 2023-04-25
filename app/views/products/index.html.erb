@@ -1,0 +1,87 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row ">
+  <div class="col-md-4">
+    <h1>Products</h1>
+  </div>
+  <div class="col-md-4">
+    <%= search_form_for @ransack_product, url: products_path, as: :products_search, html: {class: "form-inline"} do |f| %>
+      <div class="input-group">
+        <%= f.search_field :name_cont, class: 'form-control', placeholder: 'Find a product', autocomplete: :off %>
+        <div class="input-group-append">
+          <%= button_tag(type: 'submit', class: 'btn btn-outline-secondary') do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 float-right">
+    <%= link_to 'New product', new_product_path , class:"btn btn-outline-secondary float-right"%>
+  </div>
+</div>
+
+<% if @products.empty? %>
+  <p>No products found.</p>
+<% else %>
+  <table class="table datatable">
+    <thead>
+      <tr>
+        <th>Sl.No</th>
+        <th><%= sort_link(@ransack_product, :name, 'Name', default_order: :desc) %></th>
+        <th>Weight</th>
+        <th><%= sort_link(@ransack_product, :price, 'Price', default_order: :desc) %></th>
+        <th><%= sort_link(@ransack_product, :stock, 'Stock', default_order: :desc) %></th>
+        <th><%= sort_link(@ransack_product, :status, 'Status', default_order: :desc) %></th>
+        <th>Image</th>
+        <th colspan="3">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each_with_index do |product, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td class="product-name-td" title="<%= product.name %>"><%= truncate(product.name, length: 20) %></td>
+
+          <td>
+            <%= product.weight %>
+            <%= product.unit %>
+          </td>
+          <td><i class="fas fa-rupee fa-xs"></i> <%= product.price %></td>
+          <td><%= product.stock %></td>
+
+          <% if product.status %>
+            <td class="text-success">Active</td>
+          <% else%>
+            <td class="text-danger">Inactive</td>
+          <% end %>
+          <td>
+            <% if product.image.attached? %>
+              <%= image_tag product.image , style:"width:80px" %>
+            <% end %>
+          </td>
+          <td><%= link_to product, title: 'View product ' do %>
+            <i class="fa fa-circle-info text-info" data-toggle="tooltip" data-placement="top"></i>
+            <% end %>
+          </td>
+
+        <td><%= link_to edit_product_path(product), title: 'Edit product' do %>
+          <i class="fa fa-pen-to-square" data-toggle="tooltip" data-placement="top"></i>
+          <% end %>
+        </td>
+
+        <td><%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete product' do %>
+          <i class="far fa-trash-can" data-toggle="tooltip" data-placement="top"></i>
+          <% end %>
+        </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<div class="d-flex justify-content-center">
+  <%== pagy_bootstrap_nav(@pagy) %>
+</div>
+

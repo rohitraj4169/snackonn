@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+<div class="container"> 
+    <div class="row">
+    <div class="col-md-6">
+        <% if @products_detail.image.attached? %>
+        <%= image_tag @products_detail.image, style:"width:300px" %>
+        <br>
+        <h5>
+            <%= @products_detail.name %>
+            <%= @products_detail.weight %>
+            <%= @products_detail.unit %>
+        </h5>
+        <% end %>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="row">
+                <div class="card-header ">
+                    <h4 class="text-center"><%= @products_detail.name %></h2>
+                <div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 text-dark">
+                            <p>
+                            <strong>Weight:</strong>
+                            <%= @products_detail.weight %>
+                            <%= @products_detail.unit %>
+                           </p>
+                        </div>
+                        <div class="col-md-6 text-dark">
+                            <p>
+                                <strong>Price:</strong>
+                                 <%= @products_detail.price %><span class="text-muted ml-2"><del><%=(@products_detail.price + @products_detail.price * 0.1).round %></del></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 text-dark">
+                            <p>
+                                <strong>Description:</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-8 text-dark">
+                            <p>
+                            <%= @products_detail.description %>
+                            </p>
+                        </div>
+                    </div>
+
+        
+                </div>
+                <div class="card-footer d-flex justify-content-center bg-light border">
+                    <% if user_signed_in? %>
+                        <%= link_to line_items_path(product_id: @products_detail.id), method: :post, class: "btn btn-sm text-dark p-0" do %>
+                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+                        <% end %>
+                    <% else %>
+                        <%= button_tag "Add to cart", type: "button", onclick: "addToCart(#{product.id}, #{product.price}, 1)", class: "btn btn-sm text-dark p-0" %>
+                    <% end %>
+
+                </div>
+
+        
+                
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

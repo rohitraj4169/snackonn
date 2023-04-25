@@ -1,0 +1,28 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts'; 
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/v4-shims';
+
+
+
+html,
+body {
+  height: 100%;
+}
+#page-content {
+	flex: 1 0 auto;
+	background-color:lightgray;
+  }
+#sticky-footer{
+	flex-shrink: none;
+}
+
+
+
+
+
+

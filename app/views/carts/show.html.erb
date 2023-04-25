@@ -1,0 +1,88 @@
+ <% if @cart.line_items.any? %>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th class="text-left">Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                    <% @cart.line_items.each do |line_item| %>
+                        <tr>
+                            <td class="text-left">
+                                <% if line_item.product.image.attached? %>
+                                    <%= image_tag line_item.product.image, style: "width: 50px;", alt: "" %>
+                                <% end %>
+                                <%= line_item.product.name %>
+                            </td>
+                            <td class="align-middle"><%= line_item.product.price%></td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <div class="input-group-btn">
+                                        <%= link_to  line_item_reduce_path(:id => line_item), class: "btn btn-sm btn-primary btn-plus", method: :post do %>
+                                            <i class="fa fa-minus"></i>
+                                        <% end %>
+                                    </div>
+                                    <span class="quantity-value" style="display: inline-block; width: 33.33333%; text-align: center;"><%= line_item.quantity %></span>
+                                    <div class="input-group-btn">
+                                        <%= link_to  line_item_add_path(:id => line_item), class: "btn btn-sm btn-primary btn-plus", method: :post do %>
+                                            <i class="fa fa-plus"></i>
+                                        <% end %>
+                                    </div>
+
+                                </div>
+                            </td>
+                            <td class="align-middle"><%= number_to_currency(line_item.total_price, unit: '₹') %></td>
+                            <td class="align-middle">
+                            <div class="input-group-btn">
+                                <%= link_to  line_item_path(line_item), class: "btn btn-sm btn-primary", method: :delete do %>
+                                    <i class="fa fa-times"></i>
+                                <% end %>
+                            </div>
+                        </tr>
+                    <% end %>
+                    
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium"><%=number_to_currency(@cart.sub_total, unit: '₹')%></h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping Charge</h6>
+                            <h6 class="font-weight-medium">Free <del> 10</del></h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold"><%=number_to_currency(@cart.sub_total, unit: '₹')%></h5>
+                        </div>
+                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
+                        <%= link_to "place order",orders_path, method: :post%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% else%>
+<div class="text-center">
+    <h4>You don't have any items in your cart</h4>
+    <p>Your favourite items are just a click away</p>
+    <%= link_to "Start Shopping", root_path, class: "btn btn-primary", style:"margin-bottom:51px" %>
+</div>
+<% end %>

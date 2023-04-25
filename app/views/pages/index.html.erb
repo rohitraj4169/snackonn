@@ -1,0 +1,10 @@
+<% if !user_signed_in? || current_user.role_id==2%>
+    <%= render 'pages/product_list'%>
+    <%#= render 'layouts/customer/featured' %>
+    <%#= render 'layouts/customer/categories' %>
+    <%#= render 'layouts/customer/offer' %>
+    <%#= render 'layouts/customer/products1' %>
+    <%#= render 'layouts/customer/subscribe' %>
+    <%#= render 'layouts/customer/products2' %>
+    <%#= render 'layouts/customer/vendor' %>
+<% end %>

@@ -1,0 +1,69 @@
+ <div class="container-fluid">
+	<div class="row bg-secondary py-2 px-xl-5">
+	<div class="col-lg-6 d-none d-lg-block">
+		<div class="d-inline-flex align-items-center">
+		<a class="text-dark" href="">FAQs</a>
+		<span class="text-muted px-2">|</span>
+		<a class="text-dark" href="">Help</a>
+		<span class="text-muted px-2">|</span>
+		<a class="text-dark" href="">Support</a>
+		</div>
+	</div>
+	<div class="col-lg-6 text-center text-lg-right">
+		<div class="d-inline-flex align-items-center">
+		<a class="text-dark px-2" href="">
+			<i class="fab fa-facebook-f"></i>
+		</a>
+		<a class="text-dark px-2" href="">
+			<i class="fab fa-twitter"></i>
+		</a>
+		<a class="text-dark px-2" href="">
+			<i class="fab fa-linkedin-in"></i>
+		</a>
+		<a class="text-dark px-2" href="">
+			<i class="fab fa-instagram"></i>
+		</a>
+		<a class="text-dark pl-2" href="">
+			<i class="fab fa-youtube"></i>
+		</a>
+		</div>
+	</div>
+	</div>
+	<div class="row align-items-center py-3 px-xl-5">
+		<div class="col-lg-4 d-none d-lg-block ">
+			<div class="row align-items-center">
+			
+			<%= image_tag "logo.svg"%> 
+			
+			<div class="col-lg-6">
+				<h1 class="m-0 display-5 font-weight-semi-bold">Snackonn</span>
+			</div>
+			</div>
+		</div>
+		<div class="col-lg-5 col-6 text-left pl-6">
+			<%= search_form_for @ransack_product, as: :products_search, url: product_index_path do |f| %>
+				<div class="input-group">
+					<%= f.search_field :name_cont, class: "form-control", placeholder: "Search for products" %>
+					<div class="input-group-append">
+					<%= button_tag class: "btn btn-primary" do %>
+						<i class="fa fa-search"></i>
+					<% end %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-lg-3 col-6 text-right">
+			
+		
+			<a href="<%=cart_path(current_cart) if current_cart%>" class="btn border">
+			<i class="fas fa-shopping-cart text-primary"></i>
+			<% if user_signed_in? %>
+				<span class="badge"><%=current_cart.line_items.count%></span>
+			<% else %>
+				<span class="badge">0</span>
+			<% end %>
+			</a>
+		</div>
+
+	</div>
+</div>
