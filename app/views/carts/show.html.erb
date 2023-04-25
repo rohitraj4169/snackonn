@@ -72,8 +72,7 @@
                             <h5 class="font-weight-bold">Total</h5>
                             <h5 class="font-weight-bold"><%=number_to_currency(@cart.sub_total, unit: '₹')%></h5>
                         </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</button>
-                        <%= link_to "place order",orders_path, method: :post%>
+                        <%= link_to "Proceed To Checkout",orders_new_path,class:"btn btn-block btn-primary my-3 py-3"%>
                     </div>
                 </div>
             </div>

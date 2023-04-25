@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get '/local_cart', to: 'carts#local_cart'
 
   # resources :orders
+  get '/orders/new', to: 'orders#new'
    post '/orders', to: 'orders#create'
 
 

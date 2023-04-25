@@ -33,17 +33,17 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
-            <div class="dropdown-menu rounded-0 m-0">
-                
-                <% if @categories %>
-                <% @categories.each do |category| %>
-                    <%#= link_to category.name, products_path(category.id),class:"nav-item nav-link" %>
-                    <a class="dropdown-item" href="/categories/<%= category.id %>"><%= category.name %></a>
-                <% end %>
-                <% end %>
-            </div>
-        </div>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                            <div class="dropdown-menu rounded-0 m-0">
+                                
+                                <% if @categories %>
+                                    <% @categories.each do |category| %>
+                                        <%#= link_to category.name, products_path(category.id),class:"nav-item nav-link" %>
+                                        <a class="dropdown-item" href="/categories/<%= category.id %>"><%= category.name %></a>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        </div>
                         <a href="<%=root_path%>" class="nav-item nav-link active">Home</a>
                         
                         

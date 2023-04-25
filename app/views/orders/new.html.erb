@@ -1,0 +1,213 @@
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5">
+    <div class="col-lg-8">
+        <div class="mb-4">
+            <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+            <%= form_with(model: @order) do |f| %>
+              <div class="row">
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">First Name</label>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name",placeholder:"First name" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label class="text-dark">First Name</label>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name",placeholder:"Last name" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">E-mail</label>
+                    <%= f.text_field :email, autofocus: true, autocomplete: "email",placeholder:"E-mail" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">Mobile No</label>
+                    <%= f.text_field :mobile_number, autofocus: true, autocomplete: "mobile_number",placeholder:"Mobile number" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">Address Line 1</label>
+                    <%= f.text_area :address1, autocomplete:false,placeholder:"House No., Building Name" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">Address Line 2</label>
+                    <%= f.text_area :address2, autocomplete:false,placeholder:"Road name, Area, Colony" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">Country</label>
+                    <%= f.text_field :country, autofocus: true, autocomplete: "country",placeholder:"Country" , Value:"India", class:"form-control form-css" %>
+                </div>
+                 <div class="col-md-6 form-group">
+                    <label class="text-dark">State</label>
+                    <%= f.text_field :state, autofocus: true, autocomplete: "state",placeholder:"State" , class:"form-control form-css" %>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">City</label>
+                   <%= f.text_field :city, autofocus: true, autocomplete: "city",placeholder:"City" , class:"form-control form-css" %>
+                </div>
+               
+                <div class="col-md-6 form-group">
+                    <label class="text-dark">Pincode</label>
+                    <%= f.text_field :pincode, autofocus: true, autocomplete: "pincode",placeholder:"Pincode" , class:"form-control form-css" %>
+                </div>
+                <%= f.submit  "Place Order" ,class:"btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" %>
+            <%end%>
+              <!--
+                <div class="col-md-12 form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="newaccount">
+                        <label class="custom-control-label" for="newaccount">Create an account</label>
+                    </div>
+                </div>
+                
+                <div class="col-md-12 form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="shipto">
+                        <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
+                    </div>
+                </div>
+              -->
+            </div>
+        </div>
+        <div class="collapse mb-4" id="shipping-address">
+            <h4 class="font-weight-semi-bold mb-4">Shipping Address</h4>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>First Name</label>
+                    <input class="form-control" type="text" placeholder="John">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" placeholder="Doe">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>E-mail</label>
+                    <input class="form-control" type="text" placeholder="example@email.com">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Mobile No</label>
+                    <input class="form-control" type="text" placeholder="+123 456 789">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Address Line 1</label>
+                    <input class="form-control" type="text" placeholder="123 Street">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Address Line 2</label>
+                    <input class="form-control" type="text" placeholder="123 Street">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Country</label>
+                    <select class="custom-select">
+                        <option selected>United States</option>
+                        <option>Afghanistan</option>
+                        <option>Albania</option>
+                        <option>Algeria</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>City</label>
+                    <input class="form-control" type="text" placeholder="New York">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>State</label>
+                    <input class="form-control" type="text" placeholder="New York">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>ZIP Code</label>
+                    <input class="form-control" type="text" placeholder="123">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+      <div class="col-lg-4">
+          <div class="card border-secondary mb-5">
+              <div class="card-header bg-secondary border-0">
+                  <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+              </div>
+              <div class="card-body">
+                  <h5 class="font-weight-medium mb-3">Products</h5>
+                  <div style= "max-height:120px;overflow:auto;">
+                    <% @current_cart.line_items.each do |line_item| %>
+                    <div class="d-flex justify-content-between">
+                      <p><%= line_item.product.name %></p>
+                      <p><%= number_to_currency(line_item.total_price, unit: '₹') %></p>
+                    </div>
+                  <% end %>
+                  </div>
+
+
+
+                  
+                  <hr class="mt-0">
+                  <div class="d-flex justify-content-between mb-3 pt-1">
+                      <h6 class="font-weight-medium">Subtotal</h6>
+                      <h6 class="font-weight-medium"><%=number_to_currency(current_cart.sub_total, unit: '₹')%></h6>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                      <h6 class="font-weight-medium">Shipping</h6>
+                      <h6 class="font-weight-medium">Free <del> 10</del></h6>
+                  </div>
+              </div>
+              <div class="card-footer border-secondary bg-transparent">
+                  <div class="d-flex justify-content-between mt-2">
+                      <h5 class="font-weight-bold">Total</h5>
+                      <h5 class="font-weight-bold"><%=number_to_currency(current_cart.sub_total, unit: '₹')%></h5>
+                  </div>
+              </div>
+          </div>
+          <div class="card border-secondary mb-5">
+              <div class="card-header bg-secondary border-0">
+                  <h4 class="font-weight-semi-bold m-0">Payment</h4>
+              </div>
+              <div class="card-body">
+                  <div class="form-group">
+                      <div class="custom-control custom-radio">
+                          <input type="radio" class="custom-control-input" name="payment" id="paypal" checked>
+                          <label class="custom-control-label" for="paypal">Cash on Delivery</label>
+                      </div>
+                  </div>
+                  
+              </div>
+              
+             
+          </div>
+      </div>
+  </div>
+</div>
+
+  <%#= render "devise/shared/links" %>
+<style>
+  .divider-text {
+      position: relative;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+  }
+  .divider-text span {
+      padding: 7px;
+      font-size: 12px;
+      position: relative;   
+      z-index: 2;
+  }
+  .divider-text:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+      top: 55%;
+      left: 0;
+      z-index: 1;
+  }
+
+  .btn-facebook {
+      background-color: #405D9D;
+      color: #fff;
+  }
+  .btn-twitter {
+      background-color: #42AEEC;
+      color: #fff;
+  }
+  .form-css{
+    # border: 1px solid red;
+    border: 1px solid gray;
+    border-radius: 6px;
+  }
+</style>
