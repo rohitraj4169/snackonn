@@ -49,7 +49,9 @@ Rails.application.routes.draw do
 
   # resources :orders
   get '/orders/new', to: 'orders#new'
-   post '/orders', to: 'orders#create'
+  post '/orders', to: 'orders#create'
+  get '/orders', to: 'orders#index'
+  get 'orders/:id', to: 'orders#show', as: "order"
 
 
 

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     layout :choose_layout
     before_action :configure_permitted_parameters, if: :devise_controller?
     before_action :set_global_variables
-
+    
    protect_from_forgery with: :exception
 
     include Pagy::Backend  
@@ -65,6 +65,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_admin!
+    if current_user.role_id!=1
+      redirect_to root_path, alert: "You are not allowed" 
+    end
+  end
 
 
 end

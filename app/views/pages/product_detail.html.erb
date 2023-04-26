@@ -55,7 +55,7 @@
                             <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
                         <% end %>
                     <% else %>
-                        <%= button_tag "Add to cart", type: "button", onclick: "addToCart(#{product.id}, #{product.price}, 1)", class: "btn btn-sm text-dark p-0" %>
+                        <%= button_tag "Add to cart", type: "button", onclick: "addToCart(#{@products_detail.id}, #{@products_detail.price}, 1)", class: "btn btn-sm text-dark p-0" %>
                     <% end %>
 
                 </div>

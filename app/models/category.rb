@@ -9,5 +9,5 @@ class Category < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     [ "name"]
   end
-
+  validates_presence_of :name, :description
 end

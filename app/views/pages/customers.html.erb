@@ -17,8 +17,9 @@
             <%@count=@count+1%>
         <tr>
             <th scope="row"><%= @count%></th>
-            
+            <td><%= customer.first_name %> <%= customer.last_name %></td>
             <td><%= customer.email %></td>
+            <td><%= customer.phone_number %></td>
             
             <% if current_user.role.name=='admin' %>
                 <td><%= link_to 'Show', customers_path(customer) ,class:"btn btn-outline-success" %></td>

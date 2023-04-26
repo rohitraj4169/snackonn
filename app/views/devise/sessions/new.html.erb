@@ -6,14 +6,15 @@
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
         </div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"E-Mail" , class:"form-control" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "E-Mail", required: true, class: "form-control" %>
+
       </div>
 
       <div class="form-group input-group">
         <div class="input-group-prepend">
           <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
         </div>
-          <%= f.password_field :password,  autocomplete:false,placeholder:"Create Password" , class:"form-control" %>
+          <%= f.password_field :password,  autocomplete:false,placeholder:"Create Password" ,required: true, class:"form-control" %>
       </div>
 
       <% if devise_mapping.rememberable? %>
@@ -30,6 +31,7 @@
     <!-- Register buttons -->
     <div class="text-center">
       <p>Not a member? <%= link_to "Register",new_user_registration_path%></p>
+      <!--
       <p>or sign up with:</p>
       <button type="button" class="btn btn-link btn-floating mx-1 btn-facebook">
         <i class="fab fa-facebook-f"></i>
@@ -42,6 +44,7 @@
       <button type="button" class="btn btn-link btn-floating mx-1">
         <i class="fab fa-github"></i>
       </button>
+      -->
     </div>
 
     <%#= render "devise/shared/links" %>

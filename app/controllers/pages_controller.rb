@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   before_action :current_cart
   def index
   @products = Product.all
+  @order=Order.all
   end
 
   def customers

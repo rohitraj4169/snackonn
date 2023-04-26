@@ -1,0 +1,88 @@
+<div class="card">
+  <div class="card-header" style="background-color:#b3cccc">
+    <h3 class="text-black">Buyer Details</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="card-title">User Details</h3>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Name:-  <%=@order.user.first_name%>  <%=@order.user.last_name%></h5>
+        </div>
+        <div class="col-md-6">
+             <h5 class="card-title">Email:- <%=@order.user.email%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Mob. No. :- <%=@order.user.phone_number%></h5>
+        </div>
+        <div class="col-md-12">
+            <h3 class="card-title">Shipping Address</h3>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Name:- <%=@order.address_data["first_name"]%><%=@order.address_data["last_name"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Email:- <%=@order.address_data["email"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Mob. No. :- <%=@order.address_data["mobile_number"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Address1:-<%=@order.address_data["address1"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Address2:-<%=@order.address_data["address2"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">State:-<%=@order.address_data["state"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">City:- <%=@order.address_data["city"]%></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 class="card-title">Pincode:- <%=@order.address_data["pincode"]%></h5>
+        </div>
+  </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header" style="background-color:#b3cccc">
+    <h3 class="text-black">Product Details</h3>
+  </div>
+  <div class="card-body">
+<table class="w-100">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |item| %>
+      <tr>
+        <td><%= item['product_name'] %></td>
+        <td><%= item['quantity'] %></td>
+        <td><%= item['price'] %></td>
+        <td ><%= item['sub_total'] %></td>
+      </tr>
+        
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr class="border-top" style="border-color: black !important;">
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td><%=@order.sub_total%></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+
+
+
+

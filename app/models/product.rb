@@ -11,4 +11,5 @@ class Product < ApplicationRecord
    def self.ransackable_attributes(auth_object = nil)
     ["category_id", "description", "id", "image", "name", "price", "status", "stock", "unit",  "weight"]
   end
+  validates_presence_of :name,:description,:price,:weight,:stock,:unit,:status
 end
