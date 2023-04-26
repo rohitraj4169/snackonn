@@ -8,7 +8,7 @@
                     <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                         <h6 class="text-truncate mb-3"><%=product.name%></h6>
                         <div class="d-flex justify-content-center">
-                            <h6><%= product.price %></h6><h6 class="text-muted ml-2"><del><%=(product.price + product.price * 0.1).round %></del></h6>
+                            <h6><%= number_to_currency(product.price, unit: '₹') %></h6><h6 class="text-muted ml-2"><del><%=number_to_currency((product.price + product.price * 0.1).round, unit: '₹') %></del></h6>
 
                         </div>
                     </div>

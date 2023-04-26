@@ -21,7 +21,7 @@
                                 <% end %>
                                 <%= line_item.product.name %>
                             </td>
-                            <td class="align-middle"><%= line_item.product.price%></td>
+                            <td class="align-middle"><%= number_to_currency(line_item.product.price, unit: '₹')%></td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">

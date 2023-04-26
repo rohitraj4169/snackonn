@@ -31,7 +31,7 @@
           <div class="col-md-6">
             <p>
               <strong>Price:</strong>
-              <%= @product.price %>
+              <%= number_to_currency(@product.price, unit: '₹')%>
             </p>
           </div>
         </div>

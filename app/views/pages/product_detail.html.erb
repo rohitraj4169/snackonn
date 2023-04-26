@@ -30,7 +30,7 @@
                         <div class="col-md-6 text-dark">
                             <p>
                                 <strong>Price:</strong>
-                                 <%= @products_detail.price %><span class="text-muted ml-2"><del><%=(@products_detail.price + @products_detail.price * 0.1).round %></del></span>
+                                 <%= number_to_currency(@products_detail.price, unit: '₹') %><span class="text-muted ml-2"><del><%=(@products_detail.price + @products_detail.price * 0.1).round %></del></span>
                             </p>
                         </div>
                     </div>
