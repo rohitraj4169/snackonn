@@ -21,7 +21,7 @@
         <td><%= order.user.email %></td>
         <td><%= order.created_at.to_date %></td>
         <td><%= order.order_items.count %></td>
-        <td><%= order.sub_total %></td>
+        <td><%= number_to_currency(order.sub_total, unit: '₹') %></td>
         <td></td>
         <td><%= link_to "show", order, class:"btn btn-outline-secondary"%></td>
         
